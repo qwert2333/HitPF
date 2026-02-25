@@ -1,0 +1,20 @@
+python -m src.train_lightning1 \
+    --data-train /eos/experiment/fcc/users/m/mgarciam/mlpf/CLD/train/Z_uds_clustering_dataset_3/05/ \
+    --data-config config_files/config_hits_track_v4.yaml \  
+    --network-config src/models/wrapper/example_mode_gatr_noise.py \
+    --model-prefix  /eos/user/m/mgarciam/datasets_mlpf/models_trained_CLD/test_hitpf/ \
+    --num-workers 4 \
+    --gpus 0,1 \
+    --batch-size 5  \
+    --num-epochs 100 \
+    --fetch-step 1 \
+    --log-wandb \
+    --wandb-displayname CLD_clustering_training \
+    --wandb-projectname mlpf_debug \
+    --wandb-entity ml4hep \
+    --frac_cluster_loss 0 \
+    --qmin 3 \
+    --use-average-cc-pos 0.98 \
+    --train-val-split 0.98 \
+    --fetch-by-files \
+    --train-batches 10 

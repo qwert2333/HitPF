@@ -1,0 +1,26 @@
+python -m src.train_lightning1 \
+    --data-test /eos/experiment/fcc/users/m/mgarciam/mlpf/CLD/train/Z_uds_CLD_o2_v05_eval_v1/05/pf_tree_10100.parquet  \
+    --data-config config_files/config_hits_track_v4.yaml \
+    --network-config src/models/wrapper/example_mode_gatr_noise.py \
+    --model-prefix /eos/user/m/mgarciam/datasets_mlpf/models_trained_CLD/041225_arc_05/ \
+    --load-model-weights-clustering /eos/user/m/mgarciam/datasets_mlpf/models_trained_CLD/041225_arc_05/_epoch=9_step=120000.ckpt \
+    --load-model-weights /eos/user/m/mgarciam/datasets_mlpf/models_trained_CLD/040226_basic_ecor/_epoch=2_step=24000.ckpt \
+    --wandb-displayname eval_gun_drlog \
+    --gpus 2 \
+    --batch-size 20 \
+    --num-workers 4 \
+    --start-lr 1e-3 \
+    --num-epochs 100 \
+    --fetch-step 1 \
+    --fetch-by-files \
+    --log-wandb \
+    --wandb-projectname mlpf_debug_eval \
+    --wandb-entity fcc_ml \
+    --frac_cluster_loss 0 \
+    --qmin 1 \
+    --use-average-cc-pos 0.99 \
+    --correction \
+    --freeze-clustering \
+    --predict \
+    --name-output test_plot_hitpf2 \
+    --pandora

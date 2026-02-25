@@ -1,0 +1,24 @@
+python -m src.train_lightning1 \
+    --data-train /eos/experiment/fcc/users/m/mgarciam/mlpf/CLD/train/gun_ecort/05/ \
+    --data-config config_files/config_hits_track_v4.yaml \
+    --network-config src/models/wrapper/example_mode_gatr_noise.py \
+    --model-prefix /eos/user/m/mgarciam/datasets_mlpf/models_trained_CLD/test_hitpf_ecor/ \
+    --wandb-displayname E_PID_05_basicecor_v1_1 \
+    --gpus 0 \
+    --batch-size 20 \
+    --num-workers 4 \
+    --start-lr 1e-3 \
+    --num-epochs 100 \
+    --fetch-step 1 \
+    --fetch-by-files \
+    --train-val-split 0.98 \
+    --train-batches 8000 \
+    --log-wandb \
+    --wandb-projectname mlpf_debug \
+    --wandb-entity ml4hep \
+    --frac_cluster_loss 0 \
+    --qmin 1 \
+    --use-average-cc-pos 0.99 \
+    --correction \
+    --freeze-clustering \
+    --use-gt-clusters
