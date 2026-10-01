@@ -30,9 +30,9 @@ class ExampleWrapper(L.LightningModule):
         self,
         args,
         dev,
-        blocks=10,
-        hidden_mv_channels=16,
-        hidden_s_channels=64,
+        blocks=4,
+        hidden_mv_channels=8,
+        hidden_s_channels=32,
         config=None
     ):
         super().__init__()
@@ -55,7 +55,7 @@ class ExampleWrapper(L.LightningModule):
             out_s_channels=1,
             hidden_s_channels=hidden_s_channels,
             num_blocks=blocks,
-            attention=SelfAttentionConfig(),
+            attention=SelfAttentionConfig(num_heads=8),
             mlp=MLPConfig(),
         )
         self.ScaledGooeyBatchNorm2_1 = nn.BatchNorm1d(self.input_dim, momentum=0.1)
